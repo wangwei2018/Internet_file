@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}文件{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/file.css") }}">
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    <div class="table">
+        <center>
+            <table>
+                <caption>已上传文件</caption>
+                {% for msg in get_flashed_messages() %}
+                    <div style="color: red">{{ msg }}</div>
+                {% endfor %}
+                <tr>
+                    <th>文件名</th>
+                    <th>文件大小</th>
+                    <th>上传时间</th>
+                    <th>操作</th>
+                </tr>
+
+                {% for file in files %}
+                    <tr>
+                        <td>{{ file.filename }}</td>
+                        <td>
+                            {% if file.filesize>1024*1024 %}
+                                {{ "%.1f"%(file.filesize/(1024*1024)) }}MB
+                            {% else %}
+                                {{ "%.1f"%(file.filesize/1024) }}KB
+                            {% endif %}
+                        </td>
+                        <td>{{ file.time }}</td>
+                        <td>
+                            {% if file.share %}
+                                <a href="{{ url_for(".share_file",file_id=file.id) }}">取消共享</a>
+                            {% else %}
+                                <a href="{{ url_for(".share_file",file_id=file.id) }}">共享</a>
+                            {% endif %}
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="{{ url_for(".delete_file",file_id=file.id) }}">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+            <br>
+            <br>
+            <a href="{{ url_for(".upload_file") }}">上传文件</a>
+        </center>
+    </div>
+{% endblock %}

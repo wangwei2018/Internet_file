@@ -1,0 +1,53 @@
+.form{
+    padding-top: 20px;
+    background-color: yellow;
+    width: 500px;
+    text-align: center;
+}
+
+.title{
+    margin-bottom: 20px;
+    font-family: 黑体;
+    font-size: 25px;
+}
+
+.row{
+    padding-top: 10px;
+}
+
+.lable{
+    float: left;
+    margin-right: 8px;
+    /*background-color: green;*/
+    width: 140px;
+    text-align: right;
+    line-height: 29px;
+}
+
+.form_input{
+    text-align: left;
+    /*background-color: red;*/
+}
+
+.form_input_sex{
+    text-align: left;
+    line-height: 29px;
+    /*background-color: red;*/
+}
+
+.lable_info{
+    float: left;
+    margin-right: 8px;
+    /*background-color: green;*/
+    width: 140px;
+    text-align: right;
+    line-height: 160px;
+}
+
+.form_button_a{
+    text-decoration: none;
+}
+
+.form_button{
+    margin-right: 25px;
+}

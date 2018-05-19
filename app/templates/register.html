@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}注册{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/register.css") }}">
+    <script type="text/javascript" src="{{ url_for("static",filename="js/register.js") }}"></script>
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    <center>
+        <form action="" method="post" onsubmit="check()">
+            <div class="form">
+                <div class="title" style="margin-bottom: 25px">注&nbsp;&nbsp;&nbsp;册</div>
+                {% for msg in get_flashed_messages() %}
+                    <div style="color: red">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="lable">
+                        <lable for="username">用户名</lable>
+                    </div>
+                    <div class="form_input">
+                        <input type="text" id="username" name="username" onblur="ck_username()">
+                        <span style="color: red">*</span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="lable">
+                        <lable for="password">密码</lable>
+                    </div>
+                    <div class="form_input">
+                        <input type="password" id="password" name="password" onblur="ck_password1()">
+                        <span style="color: red">*</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="lable">
+                        <lable for="password2">确认密码</lable>
+                    </div>
+                    <div class="form_input">
+                        <input type="password" id="password2" name="password2" onblur="ck_password2()">
+                        <span style="color: red">*</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="lable">
+                        <lable for="name">姓名</lable>
+                    </div>
+                    <div class="form_input">
+                        <input type="text" id="name" name="name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="lable">
+                        <lable for="name">性别</lable>
+                    </div>
+                    <div class="form_input_sex">
+                        <input type="radio" name="sex" value="男">男
+                        <input type="radio" name="sex" value="女">女
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="lable">
+                        <lable for="email">邮箱</lable>
+                    </div>
+                    <div class="form_input">
+                        <input type="text" id="email" name="email" onblur="ck_email()">
+                        <span style="color: red">*</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="lable_info">
+                        <lable for="email">个人简介</lable>
+                    </div>
+                    <div class="form_input">
+                        <textarea name="info" id="info" cols="33" rows="10"></textarea>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="submit">
+                    <input type="submit" value="注册">
+                    <a href="{{ url_for("main.index") }}"><input type="button" value="返回"></a>
+                </div>
+            </div>
+        </form>
+    </center>
+{% endblock %}
+

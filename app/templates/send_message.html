@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}发送消息{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/register.css") }}">
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    <center>
+        <form action="" method="post">
+            <div class="form">
+                <div class="title" style="margin-bottom: 25px">发送消息</div>
+                {% for msg in get_flashed_messages() %}
+                    <div style="color: red">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="lable">
+                        <lable for="username">用户名</lable>
+                    </div>
+                    <div class="form_input">
+                        <input type="text" id="username" name="username">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="lable_info">
+                        <lable for="content">内容</lable>
+                    </div>
+                    <div class="form_input">
+                        <textarea name="content" id="content" cols="33" rows="10"></textarea>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="submit">
+                    <input type="submit" value="发送">
+                    <a href="{{ url_for("main.message") }}"><input type="button" value="取消"></a>
+                </div>
+            </div>
+        </form>
+    </center>
+{% endblock %}
+

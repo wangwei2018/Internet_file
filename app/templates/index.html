@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}主页{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/register.css") }}">
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    {% if current_user.is_authenticated() %}
+        <center>
+            <div class="form">
+                <form action="" method="post" onsubmit="check()">
+                    <div class="title" style="margin-bottom: 25px">功能介绍</div>
+{#                    <div class="introduce">:</div>#}
+                    <br>
+                    <br>
+                </form>
+
+            </div>
+        </center>
+    {% else %}
+        <center>
+            <form action="" method="post">
+                <div class="form">
+                    <div class="title" style="margin-bottom: 25px">登&nbsp;&nbsp;&nbsp;录</div>
+                    {% for msg in get_flashed_messages() %}
+                        <div style="color: red">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
+                    <div class="row">
+                        <div class="lable">
+                            <lable for="username">用户名</lable>
+                        </div>
+                        <div class="form_input">
+                            <input type="text" id="username" name="username">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="lable">
+                            <lable for="password">密码</lable>
+                        </div>
+                        <div class="form_input">
+                            <input type="password" id="password" name="password">
+                        </div>
+                    </div>
+
+                    <br>
+                    <br>
+                    <div class="submit">
+                        <input type="submit" value="登录">
+                    </div>
+                </div>
+            </form>
+        </center>
+    {% endif %}
+
+{% endblock %}

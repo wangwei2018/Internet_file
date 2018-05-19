@@ -1,0 +1,34 @@
+
+.table table{
+	border: 1px solid;
+	border-spacing: 0px;
+	background-color: yellow;
+	width: 600px;
+}
+
+.table table caption{
+	background-color: yellow;
+	line-height: 50px;
+	border: 2px solid;
+	font-family: 黑体;
+	font-size: 16pt;
+}
+
+.table table th{
+	border: 1px solid;
+	width: 200px;
+	height: 40px;
+
+}
+
+.table table td{
+	border: 1px solid;
+	text-align: center;
+	width: 200px;
+	height: 30px;
+}
+
+.table table td a{
+	text-decoration: none;
+	color: green;
+}

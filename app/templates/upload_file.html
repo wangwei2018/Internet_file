@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}上传文件{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/upload_file.css") }}">
+{% endblock %}
+{% block content %}
+    {{ super() }}
+
+    <center>
+        <div class="form">
+            <form action="" method="post" enctype="multipart/form-data">
+
+                <div class="title" style="margin-bottom: 25px">上传文件</div>
+                {% for msg in get_flashed_messages() %}
+                    <div style="color: red">{{ msg }}</div>
+                {% endfor %}
+                <div class="row">
+                    <div class="lable">
+                        <lable for="email">选择文件</lable>
+                    </div>
+                    <div class="form_input">
+                        <input type="file" name="file">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="lable">
+                        <lable for="name">是否共享</lable>
+                    </div>
+                    <div class="form_input_sex">
+                        <input type="radio" name="share" value="yes">是
+                        <input type="radio" name="share" value="no">否
+                    </div>
+                </div>
+
+
+                <br>
+                <br>
+                <div class="submit">
+                    <input type="submit" value="上传">
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="form_button_a" href="{{ url_for("main.file") }}"><input type="button" value="取消"></a>
+                </div>
+            </form>
+
+        </div>
+    </center>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}个人信息{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/info.css") }}">
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    <div class="table">
+        <center>
+            {% for msg in get_flashed_messages() %}
+                <div style="color: red">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+            <table>
+                <caption>个人信息</caption>
+                <tr>
+                    <td>用户名</td>
+                    <td>{{ current_user.username }}</td>
+                </tr>
+                <tr>
+                    <td>姓名</td>
+                    <td>{{ current_user.name }}</td>
+                </tr>
+                <tr>
+                    <td>性别</td>
+                    {% if current_user.sex %}
+                        <td>男</td>
+                    {% else %}
+                        <td>女</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>邮箱</td>
+                    <td>{{ current_user.email }}</td>
+                </tr>
+                <tr>
+                    <td>简介</td>
+                    <td>{{ current_user.info }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="{{ url_for(".edit") }}">修改个人信息</a></td>
+                </tr>
+            </table>
+        </center>
+    </div>
+{% endblock %}

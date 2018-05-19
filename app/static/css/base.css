@@ -1,0 +1,40 @@
+.navigation{
+	background-color: gray;
+	height: 50px;
+	padding-right: 250px;
+	padding-left: 250px;
+}
+
+.li_first{
+	float: left;
+	list-style: none;
+	text-align: center;
+	line-height: 50px;
+	width: 80px;
+	margin-right: 50px;
+	background-color: black;
+}
+
+.navigation ul .li{
+	float: left;
+	list-style: none;
+	text-align: center;
+	line-height: 50px;
+	width: 80px;
+	margin-right: 50px;
+}
+
+
+
+.li_last{
+	float: right;
+	list-style: none;
+	text-align: center;
+	line-height: 50px;
+	margin-right: 20px;
+}
+
+.navigation ul li a{
+	text-decoration: none;
+	color: white;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}
+        <link rel="stylesheet" href="{{ url_for("static",filename="css/base.css") }}">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+    <div class="navigation">
+        <ul>
+            <li class="li_first"><a href="{{ url_for(".index") }}">主页</a></li>
+            <li class="li"><a href="{{ url_for(".info") }}">信息管理</a></li>
+            <li class="li"><a href="{{ url_for(".file") }}">文件管理</a></li>
+            <li class="li"><a href="{{ url_for(".all_file") }}">站内文件</a></li>
+            <li class="li"><a href="{{ url_for(".message") }}">消息管理</a></li>
+            <li class="li"><a href="{{ url_for(".memo") }}">备忘录</a></li>
+            {% if current_user.is_authenticated() %}
+                <li class="li_last"><a href="{{ url_for(".logout") }}">注销</a></li>
+                <li class="li_last"><a href="{{ url_for(".info") }}">{{ current_user.username }}</a></li>
+            {% else %}
+                <li class="li_last"><a href="{{ url_for(".register") }}">注册</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+
+</body>
+</html>

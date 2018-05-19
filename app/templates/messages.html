@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}消息列表{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/messages.css") }}">
+{% endblock %}
+{% block content %}
+    {{ super() }}
+
+    <div class="table">
+        <center>
+            <table>
+                <caption>收到的消息</caption>
+                {% for msg in get_flashed_messages() %}
+                    <div style="color: red">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+                <tr>
+                    <th>发送方</th>
+                    <th>消息内容</th>
+                    <th>发送时间</th>
+                    <th>操作</th>
+                </tr>
+                {% for msg in msgs %}
+                    <tr>
+                        <td>{{ msg.sender }}</td>
+                        <td>{{ msg.content }}</td>
+                        <td>{{ msg.time }}</td>
+                        <td><a href="{{ url_for(".reply",username=msg.sender) }}">回复</a>&nbsp;&nbsp;<a
+                                href="{{ url_for(".delete_msg",id=msg.id) }}">删除</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <a href="{{ url_for(".send_message") }}">发送消息</a>
+        </center>
+    </div>
+{% endblock %}

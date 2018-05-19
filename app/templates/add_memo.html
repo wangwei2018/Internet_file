@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}添加备忘录{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/register.css") }}">
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    <center>
+        <form action="" method="post">
+            <div class="form">
+                <div class="title" style="margin-bottom: 25px">添加备忘录</div>
+                {% for msg in get_flashed_messages() %}
+                    <div style="color: red">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="lable">
+                        <lable for="theme">主题</lable>
+                    </div>
+                    <div class="form_input">
+                        <input type="text" id="theme" name="theme">
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="lable_info">
+                        <lable for="email">内容</lable>
+                    </div>
+                    <div class="form_input">
+                        <textarea name="content" id="content" cols="33" rows="10"></textarea>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="submit">
+                    <input type="submit" value="添加">
+                    <a href="{{ url_for("main.memo") }}"><input type="button" value="取消"></a>
+                </div>
+            </div>
+        </form>
+    </center>
+{% endblock %}
+

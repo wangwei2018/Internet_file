@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}备忘录{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/memos.css") }}">
+{% endblock %}
+{% block content %}
+    {{ super() }}
+
+    <div class="table">
+    <center>
+        <table>
+            {% for msg in get_flashed_messages() %}
+                <div style="color: red">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+            <tr>
+                <th>主题</th>
+                <th>内容</th>
+                <th>发表时间</th>
+                <th>操作</th>
+            </tr>
+            {% for memo in memoes %}
+                <tr>
+                    <td>{{ memo.theme }}</td>
+                    <td>{{ memo.content }}</td>
+                    <td>{{ memo.time }}</td>
+                    <td><a href="{{ url_for(".delete_demo",id=memo.id) }}">删除</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+    <a href="{{ url_for(".add_memo") }}">添加备忘录</a>
+    </center>
+    </div>
+
+{% endblock %}
